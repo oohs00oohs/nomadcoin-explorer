@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import TransactionsPresenter from "./TransactionsPresenter";
 
-class TransactionContainer extends Component {
-    render() {
-        return <TransactionsPresenter/>
-    }
+class TransactionsContainer extends Component {
+  render() {
+    return <TransactionsPresenter />;
+  }
 }
 
-export default TransactionContainer;
+TransactionsContainer.propTypes = {
+  transactions: PropTypes.array.isRequired
+};
+
+export default TransactionsContainer;

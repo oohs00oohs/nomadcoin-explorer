@@ -17,7 +17,7 @@ const AppContainer = styled.div`
 
 const Main = styled.main`
     max-width : 1000px;
-    width : 100px;
+    width : 1000px;
     @media screen and (max-width : 60px){
         width : 95%
     }
