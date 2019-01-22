@@ -23,19 +23,44 @@ const Main = styled.main`
     }
 `;
 
-const AppPresenter = () => (
+const AppPresenter = ({isLoading, transactions, blocks}) => (
     <BrowserRouter>
         <AppContainer>
             <Header/>
-            <Main>
-                <Switch>
-                    <Route exact path={`/`} component={Home}/>
-                    <Route exact path={`/blocks`} component={Blocks}/>
-                    <Route exact path={`/transactions`} component={Transactions}/>
-                </Switch>
-            </Main>
+            {!isLoading  && (
+                <Main>
+                    <Switch>
+                        <Route 
+                            exact 
+                            path={`/`} 
+                            render={() => (
+                                <Home 
+                                    blocks={blocks.slice(0, 5)} 
+                                    transactions={transactions.slice(0, 5)}
+                                />
+                            )}
+                        />
+                        <Route 
+                            exact 
+                            path={`/blocks`} 
+                            render={() => <Blocks blocks={blocks}/>}
+                        />
+                        <Route 
+                            exact 
+                            path={`/transactions`} 
+                            render={() => <Transactions transactions={transactions}/>}
+                        />
+                    </Switch>
+                </Main>
+            )}
         </AppContainer>
     </BrowserRouter>
 );
+
+AppPresenter.propTypes = {
+    isLoading : PropTypes.bool.isRequired,
+    transactions : PropTypes.array,
+    blocks : PropTypes.array
+}
 
 export default AppPresenter;
