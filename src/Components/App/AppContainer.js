@@ -47,6 +47,7 @@ class App extends Component {
         const ws = new WebSocket(WS_URL);
         ws.addEventListener("message", message => {
             const parsedMessage = parseMessage(message);
+            console.log(parsedMessage);
             if(parsedMessage !== null && parsedMessage !== undefined){
                 this.setState(prevState => {
                     return{
